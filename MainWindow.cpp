@@ -243,11 +243,11 @@ namespace gui
         SendMessage(btStopSpam, WM_SETFONT, reinterpret_cast<WPARAM>(sylfaenFont), FALSE);
 
         wostringstream oss;
-        oss << L"Amount (max" << MainWindow::MaxSpamMessages << ")";
+        oss << L"Amount (max " << MainWindow::MaxSpamMessages << ")";
 
         // UpDown edit label
         stSpamCount = CreateWindow(WC_STATIC, oss.str().c_str(),
-            WS_VISIBLE | WS_CHILD, 222, 83, 120, 24, parent, 0, hInstance, 0);
+            WS_VISIBLE | WS_CHILD, 222, 83, 130, 24, parent, 0, hInstance, 0);
         SendMessage(stSpamCount, WM_SETFONT, (WPARAM)sylfaenFont, FALSE);
 
         // UpDown edit field
@@ -260,7 +260,7 @@ namespace gui
         udSpamCount = CreateWindowEx(WS_EX_LTRREADING, UPDOWN_CLASS, NULL,
             WS_CHILDWINDOW | WS_VISIBLE | UDS_AUTOBUDDY | UDS_SETBUDDYINT | UDS_ALIGNRIGHT | UDS_ARROWKEYS,
             0, 0, 0, 0, parent, NULL, hInstance, NULL);
-        SendMessage(udSpamCount, UDM_SETRANGE, 0, MAKELPARAM(1, MainWindow::MaxSpamMessages));
+        SendMessage(udSpamCount, UDM_SETRANGE, 0, MAKELPARAM(MainWindow::MaxSpamMessages, 1));
         SendMessage(udSpamCount, UDM_SETPOS, 0, 4);
 
         // Progress bar
